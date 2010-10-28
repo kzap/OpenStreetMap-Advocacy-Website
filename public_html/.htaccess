@@ -1,0 +1,19 @@
+php_flag session.use_trans_sid off
+php_flag register_globals off
+ErrorDocument 404 /404.php
+
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^www.openstreetmap.org.ph [NC]
+RewriteRule ^(.*)$ http://openstreetmap.org.ph/$1 [L,R=301]
+RewriteRule ^index.php(.*)$ http://openstreetmap.org.ph/$1 [L,R=301]
+
+RewriteRule ^map/c/(.+)/(.+)/(.+)/ view.php?lat=$1&lon=$2&z=$3&custom=1
+RewriteRule ^map/(.+) view.php?visit=$1 [NC,L]
+RewriteRule ^map/$ view.php?visit=all [NC,L]
+RewriteRule ^widget-view/(.+)/(.+)/(.+)/(.+)/(.+)/ widget_view.php?lat=$1&lon=$2&z=$3&w=$4&h=$5
+RewriteRule ^widget/c/(.+)/(.+)/(.+)/ widget.php?lat=$1&lon=$2&z=$3&custom=1
+RewriteRule ^widget/(.+) widget.php?visit=$1 [NC,L]
+RewriteRule ^widget/$ widget.php?visit=all [NC,L]
+RewriteRule ^geo.xml georss.php [NC,L]
+RewriteRule ^sitemap.xml sitemap.php [NC,L]

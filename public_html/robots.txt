@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /remote.php
+Sitemap: http://www.openstreetmap.org.ph/sitemap.xml
